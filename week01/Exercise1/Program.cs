@@ -1,3 +1,5 @@
+//Thomas Barney
+
 using System;
 
 namespace sandbox
@@ -10,7 +12,7 @@ namespace sandbox
             string firstName = Console.ReadLine();
             Console.WriteLine("What is your last name?");
             string lastName = Console.ReadLine();
-            Console.WriteLine($"Your nam is {firstName}, {firstName} {lastName}!");
+            Console.WriteLine($"Your name is {firstName}, {firstName} {lastName}!");
         }
     }
 }
