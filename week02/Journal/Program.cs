@@ -1,18 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-class JournalEntry
-{
-    public DateTime Date { get; set; }
-    public string Prompt { get; set; }
-    public string Response { get; set; }
-
-    public override string ToString()
-    {
-        return $"Date: {Date}\nPrompt: {Prompt}\nResponse: {Response}\n";
-    }
-}
+// for the "exceeding requirements" I decided "Think of other problems that keep people from writing in their journal and address one of those"
+// It's kind of hard to tell tone in a journal so before writing an entry the user can choose an between, Happy, Neutral, or Unhappy.
 
 class JournalApp
 {
@@ -25,7 +15,10 @@ class JournalApp
         "What challenged you today?",
         "What are you grateful for right now?",
         "What did you learn today?",
-        "What would you tell yourself one year ago?"
+        "What would you tell yourself one year ago?",
+        "What is a goal you want to achieve?",
+        "Describe a moment that made you proud."
+
     };
 
     static void Main()
@@ -68,6 +61,27 @@ class JournalApp
 
     static void WriteEntry()
     {
+        Console.WriteLine("\nChoose an emoji to indicate your mood:");
+        Console.WriteLine("1. Happy");
+        Console.WriteLine("2. Neutral");
+        Console.WriteLine("3. Unhappy");
+        Console.Write("Enter the number of your choice: ");
+        string chooseEmoji = Console.ReadLine();
+        switch (chooseEmoji)
+        {
+            case "1":
+                Console.WriteLine("You chose: Happy");
+                break;
+            case "2":
+                Console.WriteLine("You chose: Neutral");
+                break;
+            case "3":
+                Console.WriteLine("You chose: Unhappy");
+                break;
+            default:
+                Console.WriteLine("Invalid choice.");
+                return;
+        }
         string prompt = GetPrompt();
         Console.WriteLine($"\nPrompt: {prompt}");
         Console.Write("Your response: ");
@@ -81,7 +95,7 @@ class JournalApp
         };
 
         entries.Add(entry);
-        Console.WriteLine("✅ Entry added!");
+        Console.WriteLine("Entry added!");
     }
 
     static string GetPrompt()
@@ -118,7 +132,7 @@ class JournalApp
                 sw.WriteLine(entry.Response);
             }
         }
-        Console.WriteLine("💾 Entries saved to journal.txt");
+        Console.WriteLine("Entries saved to journal.txt");
     }
 
     static void LoadEntries()
@@ -126,7 +140,7 @@ class JournalApp
         entries.Clear();
         if (!File.Exists(filePath))
         {
-            Console.WriteLine("⚠️ No journal file found to load.");
+            Console.WriteLine("No journal file found to load.");
             return;
         }
 
@@ -140,7 +154,7 @@ class JournalApp
             {
                 if (line == "-----")
                 {
-                    if (entry != null && state == 3) // Only add if all fields were set
+                    if (entry != null && state == 3) 
                         entries.Add(entry);
                     entry = new JournalEntry();
                     state = 0;
@@ -169,6 +183,6 @@ class JournalApp
                 entries.Add(entry);
         }
 
-        Console.WriteLine("📂 Journal entries loaded.");
+        Console.WriteLine("Journal entries loaded.");
     }
 }
