@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 // for the "exceeding requirements" I decided "Think of other problems that keep people from writing in their journal and address one of those"
 // It's kind of hard to tell tone in a journal so before writing an entry the user can choose an between, Happy, Neutral, or Unhappy.
-
+// I did do something a little different with the prompts, instead of ranomly selecting one every time you boot it up
+// it intead chooses one at random once a day, so you can write about the same prompt multiple times if you want.
 class JournalApp
 {
     static List<JournalEntry> entries = new List<JournalEntry>();
@@ -154,7 +155,7 @@ class JournalApp
             {
                 if (line == "-----")
                 {
-                    if (entry != null && state == 3) 
+                    if (entry != null && state == 3)
                         entries.Add(entry);
                     entry = new JournalEntry();
                     state = 0;
