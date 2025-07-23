@@ -1,32 +1,20 @@
 using System;
 using System.Collections.Generic;
-
+#region Video and Comment Classes
 namespace YouTubeVideoTracker
 {
-    public class Comment
-    {
-        public string CommenterName { get; set; }
-        public string Text { get; set; }
-
-        public Comment(string commenterName, string text)
-        {
-            CommenterName = commenterName;
-            Text = text;
-        }
-    }
-
-    public class Video
+        public class Video
     {
         public string Title { get; set; }
         public string Author { get; set; }
-        public int LengthInSeconds { get; set; }
+        public int Length { get; set; }
         private List<Comment> comments;
 
-        public Video(string title, string author, int lengthInSeconds)
+        public Video(string title, string author, int length)
         {
             Title = title;
             Author = author;
-            LengthInSeconds = lengthInSeconds;
+            Length = length;
             comments = new List<Comment>();
         }
 
@@ -46,6 +34,19 @@ namespace YouTubeVideoTracker
         }
     }
 
+    public class Comment
+    {
+        public string CommenterName { get; set; }
+        public string Text { get; set; }
+
+        public Comment(string commenterName, string text)
+        {
+            CommenterName = commenterName;
+            Text = text;
+        }
+    }
+#endregion
+#region Main Program
     class Program
     {
         static void Main(string[] args)
@@ -80,7 +81,7 @@ namespace YouTubeVideoTracker
             {
                 Console.WriteLine($"Title: {video.Title}");
                 Console.WriteLine($"Author: {video.Author}");
-                Console.WriteLine($"Length: {video.LengthInSeconds} seconds");
+                Console.WriteLine($"Length: {video.Length} seconds");
                 Console.WriteLine($"Number of Comments: {video.GetCommentCount()}");
                 Console.WriteLine("Comments:");
                 foreach (var comment in video.GetComments())
@@ -92,3 +93,4 @@ namespace YouTubeVideoTracker
         }
     }
 }
+#endregion
