@@ -60,7 +60,7 @@ namespace YouTubeVideoTracker
 
             Video video2 = new Video("DevLog 0", "Dr. Hare Studios", 900);
             video2.AddComment(new Comment("DanaTheExplorer", "Def gunna pre-order fr fr!"));
-            video2.AddComment(new Comment("Eccles_justin_hole_digger", "Can you add a hole digging mechanic?"));
+            video2.AddComment(new Comment("Eccles_justin_the_hole_digger", "Can you add a hole digging mechanic?"));
             video2.AddComment(new Comment("Lank", "Exciting."));
             videos.Add(video2);
 
