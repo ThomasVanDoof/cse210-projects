@@ -4,25 +4,33 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Activity 1: Breathing exercise");
-        Console.WriteLine("Activity 2: Meditation");
-        Console.WriteLine("Activity 3: Gratitude journaling");
-        System.Threading.Thread.Sleep(2000);
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("Mindfulness Activities");
+            Console.WriteLine("1. Breathing");
+            Console.WriteLine("2. Reflection");
+            Console.WriteLine("3. Listing");
+            Console.WriteLine("4. Quit");
+            Console.Write("Choose an activity: ");
+            string choice = Console.ReadLine();
 
-        Console.WriteLine("First let's do a breathing exercise.");
-        BreathingActivity breathingActivity = new BreathingActivity();
-        breathingActivity.Start();
-        System.Threading.Thread.Sleep(2000);
+            Activity activity = choice switch
+            {
+                "1" => new BreathingActivity(),
+                "2" => new ReflectionActivity(),
+                "3" => new ListingActivity(),
+                "4" => null,
+                _ => null
+            };
 
-        Console.WriteLine("Now let's move on to meditation.");
-        MeditationActivity meditationActivity = new MeditationActivity();
-        meditationActivity.Start();
-        System.Threading.Thread.Sleep(2000);
+            if (choice == "4" || activity == null)
+            {
+                Console.WriteLine("Goodbye!");
+                break;
+            }
 
-        Console.WriteLine("Now let's move on to gratitude journaling.");
-        GratitudeActivity gratitudeActivity = new GratitudeActivity();
-        gratitudeActivity.Start();
-        System.Threading.Thread.Sleep(2000);
-        Console.WriteLine("Thank you for participating in today's mindfulness activities!");
+            activity.StartActivity();
+        }
     }
 }

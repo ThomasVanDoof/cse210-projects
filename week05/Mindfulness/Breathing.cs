@@ -1,23 +1,26 @@
-public class BreathingActivity
+using System;
+using System.Threading;
+
+public class BreathingActivity : Activity
 {
-    public void Start()
+    public BreathingActivity()
     {
-        Console.WriteLine("Welcome to the Breathing Activity.");
-        for (int i = 0; i < 3; i++)
+        name = "Breathing";
+        description = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
+    }
+
+    protected override void RunActivity()
+    {
+        int timePassed = 0;
+        while (timePassed < duration)
         {
-            Console.WriteLine("Get ready to breathe...");
-            System.Threading.Thread.Sleep(2000);
-            Console.WriteLine("Inhale deeply through your nose...");
-            System.Threading.Thread.Sleep(4000);
+            Console.WriteLine("Breathe in through your nose...");
+            Countdown(4);
             Console.WriteLine("Hold your breath...");
-            System.Threading.Thread.Sleep(4000);
-            Console.WriteLine("Exhale slowly through your mouth...");
-            System.Threading.Thread.Sleep(4000);
-            Console.WriteLine("Great job! Let's do it again.");
-            System.Threading.Thread.Sleep(2000);
-            Console.WriteLine($"Breathing cycle {i + 1} complete.");
+            Countdown(4);
+            Console.WriteLine("Breathe out through your mouth...");
+            Countdown(4);
+            timePassed += 12;
         }
-        
-        Console.WriteLine("Activity complete. Thank you for participating.");
     }
 }
