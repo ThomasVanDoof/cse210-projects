@@ -5,7 +5,7 @@ using System.IO;
 // It's kind of hard to tell tone in a journal so before writing an entry the user can choose an between, Happy, Neutral, or Unhappy.
 // I did do something a little different with the prompts, instead of ranomly selecting one every time you boot it up
 // it intead chooses one at random once a day, so you can write about the same prompt multiple times if you want.
-class JournalApp
+public class JournalApp
 {
     static List<JournalEntry> entries = new List<JournalEntry>();
     static string filePath = "journal.txt";
